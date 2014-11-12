@@ -1,5 +1,5 @@
-Auditd
-======
+Audit
+=====
 
 Ansible role to manage linux [audit](http://people.redhat.com/sgrubb/audit/) daemon.
 
