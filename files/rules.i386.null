@@ -1,0 +1,6 @@
+# first rule - delete all
+-D
+
+# increase buffers to survive stress events
+-b 320
+
