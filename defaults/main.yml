@@ -1,3 +1,3 @@
 ---
 # defaults file for audit
-audit_rules: null
+audit_rules: "null"
