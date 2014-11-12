@@ -1,0 +1,4 @@
+---
+- name: install audit packages
+  yum: name={{item}} state=installed
+  with_items: audit_pkgs

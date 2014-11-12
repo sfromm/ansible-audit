@@ -1,4 +1,4 @@
 ---
-auditd_pkgs:
+audit_pkgs:
     - audit
     - audispd-plugins
