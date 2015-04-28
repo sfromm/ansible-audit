@@ -28,3 +28,12 @@
       dest=/etc/audit/rules.d/audit.rules
       backup=yes
   notify: restart auditd
+  when: audit_version.stdout|int >= 2.0
+
+- name: deploy audit.rules
+  copy: >
+      src=rules.{{ansible_architecture}}.{{audit_rules}}
+      dest=/etc/audit/audit.rules
+      backup=yes
+  notify: restart auditd
+  when: audit_version.stdout|int < 2.0
