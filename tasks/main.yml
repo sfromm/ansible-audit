@@ -22,13 +22,17 @@
       - { src: audisp-remote.conf.j2, dest: audisp-remote.conf }
       - { src: au-remote.conf.j2,     dest: au-remote.conf }
 
+- name: stat rules.d path
+  stat: path=/etc/audit/rules.d
+  register: audit_stat
+
 - name: deploy audit.rules
   copy: >
       src=rules.{{ansible_architecture}}.{{audit_rules}}
       dest=/etc/audit/rules.d/audit.rules
       backup=yes
   notify: restart auditd
-  when: audit_version.stdout|int >= 2.0
+  when: audit.stat.stat.exists
 
 - name: deploy audit.rules
   copy: >
@@ -36,4 +40,4 @@
       dest=/etc/audit/audit.rules
       backup=yes
   notify: restart auditd
-  when: audit_version.stdout|int < 2.0
+  when: not audit.stat.stat.exists

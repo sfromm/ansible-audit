@@ -2,7 +2,3 @@
 - name: install audit packages
   yum: name={{item}} state=installed
   with_items: audit_pkgs
-
-- name: determine auditd version
-  shell: rpm -q audit --queryformat '%{version}\n' | sed 's/\.[0-9]*$//g'
-  register: audit_version
