@@ -32,7 +32,7 @@
       dest=/etc/audit/rules.d/audit.rules
       backup=yes
   notify: restart auditd
-  when: audit.stat.stat.exists
+  when: audit_stat.stat.exists
 
 - name: deploy audit.rules
   copy: >
@@ -40,4 +40,4 @@
       dest=/etc/audit/audit.rules
       backup=yes
   notify: restart auditd
-  when: not audit.stat.stat.exists
+  when: not audit_stat.stat.exists
